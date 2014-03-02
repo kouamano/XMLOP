@@ -19,6 +19,6 @@ while($tx =~ /(<\/[^<>]*>)/ig){
 	$l = length($1);
 	$s = $p-$l;
 	$e = $p-1;
-	print "$s-$e:e:\n";
+	print "$s-$e:e:$1:\n";
 }
 print ";;;\n";
