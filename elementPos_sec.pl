@@ -10,7 +10,7 @@ while($tx =~ /(<sec[^<>]*>)/ig){
 	$l = length($1);
 	$s = $p-$l;
 	$e = $p-1;
-	$1 =~ /(sec-type=\"[^\"]\")/ig;
+	#$1 =~ /(sec-type=\"[^\"]\")/ig;
 	print "$s-$e:s:$1:\n";
 }
 print ";;\n";
