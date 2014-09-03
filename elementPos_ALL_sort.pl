@@ -5,7 +5,7 @@ while(<>){
 }
 $tx = join("",@arr);
 @arr = ();
-while($tx =~ /(<[^<>\/!]*\>)/ig){
+while($tx =~ /(<[^!\?][^<>\/]*\>)/ig){
 	$p = pos($tx);
 	$l = length($1);
 	$s = $p-$l;
@@ -14,7 +14,7 @@ while($tx =~ /(<[^<>\/!]*\>)/ig){
 	push(@arr,"$s-$e:s:$1:\n");
 }
 #print ";;\n";
-while($tx =~ /(<\/[^<>!]*>)/ig){
+while($tx =~ /(<\/[^<>]*>)/ig){
 	$p = pos($tx);
 	$l = length($1);
 	$s = $p-$l;
