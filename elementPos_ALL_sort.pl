@@ -28,8 +28,9 @@ while($tx =~ /(<[^<>\/!]*\/\>)/ig){
 	$s = $p-$l;
 	$e = $p-1;
 	#print "$s-$e:b:$1:\n";
-	push(@arr,"$s-$e:b:$1:\n");
+	#push(@arr,"$s-$e:b:$1:\n");
 }
 #print ";;;\n";
 @arr = sort {$a <=> $b} @arr;
 print @arr;
+print ";;;\n";
