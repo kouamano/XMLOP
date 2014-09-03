@@ -6,7 +6,6 @@ while(<>){
 $tx = join("",@arr);
 #while($tx =~ /(<[^<>\/]*\/{0,1}>)/ig){
 while($tx =~ /(<[^<>\/]*\>)/ig){
-	$m = "";
 	$p = pos($tx);
 	$l = length($1);
 	$s = $p-$l;
