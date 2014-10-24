@@ -10,6 +10,12 @@ argvs=sys.argv
 
 def getchild(root, level):
 	print ":"*level + "<" + root.tagName + ">"
+	print root.toxml
+	print len(str(root))
+	print str(root.toxml)
+	print len(str(root.toxml))
+	a = root.getElementsByTagName(root.tagName)
+	print a.toxml
 	for node in root.childNodes:
 		if node.nodeType == node.ELEMENT_NODE:
 			getchild(node, level + 1)
