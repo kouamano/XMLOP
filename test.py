@@ -10,7 +10,6 @@ argvs=sys.argv
 
 def getchild(root, level):
 	print ":"*level + "<" + root.tagName + ">"
-	print root.attributes
 	for node in root.childNodes:
 		if node.nodeType == node.ELEMENT_NODE:
 			getchild(node, level + 1)
