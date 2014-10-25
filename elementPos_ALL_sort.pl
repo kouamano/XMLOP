@@ -7,14 +7,15 @@ $tx = join("",@arr);
 @arr = ();
 while($tx =~ /(<[^<>\/!\?][^<>]*[^\/]{0,1}>)/ig){
 	$p = pos($tx);
-	$l = length($1);
+	$target = $1;
+	$l = length($target);
 	$s = $p-$l;
 	$e = $p-1;
 	#print "$s-$e:s:$1:\n";
-	if($1 =~ /\/>$/){
-		push(@arr,"$s-$e:a:$1:\n");
+	if($target =~ /\/>$/){
+		push(@arr,"$s-$e:a:$target:\n");
 	}else{
-		push(@arr,"$s-$e:s:$1:\n");
+		push(@arr,"$s-$e:s:$target:\n");
 	}
 }
 #print ";;\n";
