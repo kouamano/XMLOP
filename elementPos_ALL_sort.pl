@@ -11,7 +11,11 @@ while($tx =~ /(<[^<>\/!\?][^<>]*[^\/]{0,1}>)/ig){
 	$s = $p-$l;
 	$e = $p-1;
 	#print "$s-$e:s:$1:\n";
-	push(@arr,"$s-$e:s:$1:\n");
+	if($1 =~ /\/>$/){
+		push(@arr,"$s-$e:a:$1:\n");
+	}else{
+		push(@arr,"$s-$e:s:$1:\n");
+	}
 }
 #print ";;\n";
 while($tx =~ /(<\/[^<>]*>)/ig){
