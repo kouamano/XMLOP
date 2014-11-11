@@ -109,7 +109,7 @@ for($i=0;$i<$lcount;$i++){
 	@maparr = map {(split(":",$_))[1]} @arr;
 	print "\n -> [[[ @maparr ]]]";
 	@srtmaparr = sort {$a <=> $b} @maparr;
-	print "\n [[[ @srtmaparr ]]]\n";
+	print "\n -> [[[ @srtmaparr ]]]\n";
 	#Under construction
 }
 
