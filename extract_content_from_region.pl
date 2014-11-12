@@ -22,15 +22,18 @@ foreach(@arr){
 	$title = shift(@line);
 	$title =~ s/^\[[0-9]*\]\.//;
 	$fname = "$dir"."$title";
-	print "$fname";
-	foreach(@line){
-		chomp;
-		#print $_;
-		$reg = (split(":",$_))[1];
-		$com= "streamcut if=\'$fname\' span=$reg\n";
-		$res = `$com`;
-		$res =~ s/\s/ /ig;
-		print "\t$res";
+	$n = @line;
+	if($n > 0){
+		print "$fname";
+		foreach(@line){
+			chomp;
+			#print $_;
+			$reg = (split(":",$_))[1];
+			$com= "streamcut if=\'$fname\' span=$reg\n";
+			$res = `$com`;
+			$res =~ s/\s/ /ig;
+			print "\t$res";
+		}
+		print "\n";
 	}
-	print "\n";
 }
