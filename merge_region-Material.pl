@@ -24,7 +24,7 @@ sub _check {
 
 sub _status {
 	print "STATUS:\n";
-	printf " Under construction.\n"
+	printf " complete.\n"
 }
 
 # argment analysis
@@ -76,7 +76,7 @@ foreach(@files){
 	$astr=join('',@arr);
 	push(@fcont,$astr);
 }
-##insert to matrix
+##insert to table
 #print $fcont[0];
 $fcount = 0;
 foreach(@fcont){
@@ -98,6 +98,7 @@ foreach(@fcont){
 #print "1\n";
 #print $allcont[18][1];
 #print "\n++++++++\n";
+##table operation
 for($i=0;$i<$lcount-1;$i++){
 	@arr = ();
 	for($j=0;$j<$fcount;$j++){
