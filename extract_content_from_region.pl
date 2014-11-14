@@ -28,7 +28,7 @@ foreach(@arr){
 		open(IN,$fname);
 		while(<IN>){
 			if($_ =~ /<article-meta><article-id pub-id-type="pmid">([0-9]+)/g){
-				print $1;
+				print " $1";
 			}
 		}
 		close(IN);
