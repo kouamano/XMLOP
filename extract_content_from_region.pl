@@ -24,7 +24,17 @@ foreach(@arr){
 	$fname = "$dir"."$title";
 	$n = @line;
 	if($n > 0){
-		print "$fname";
+		#PMID
+		open(IN,$fname);
+		while(<IN>){
+			if($_ =~ /<article-meta><article-id pub-id-type="pmid">([0-9]+)/g){
+				print $1;
+			}
+		}
+		close(IN);
+		#file name
+		print "\t$fname";
+		#region
 		foreach(@line){
 			chomp;
 			#print $_;
