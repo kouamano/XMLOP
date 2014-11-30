@@ -13,6 +13,6 @@ while($str =~ /(<p>.*?<\/p>)/ig){
 #print @arr;
 foreach(@arr){
 	if($_ =~ /xref/){
-		print "$_\n";
+		print "\t$_";
 	}
 }
