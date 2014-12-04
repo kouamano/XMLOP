@@ -7,3 +7,4 @@ while(<>){
 	$_ =~ s/\s*$//;
 	print " $_";
 }
+print "\n";
