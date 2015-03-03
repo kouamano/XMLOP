@@ -2,6 +2,6 @@
 
 while(<>){
 	$_ =~ s/(<[^<>]*>)/sprintf("<%s>",length($1))/eg;
-	#$_ =~ s/<([^<>]*)>/for($i=0;$i<length($1);$i++){sprintf("*")}/eg;
+	#$_ =~ s/<([^<>]*)>/for($i=0;$i<length($1);$i++){sprintf("%s"," ")}/eg;
 	print $_;
 }
