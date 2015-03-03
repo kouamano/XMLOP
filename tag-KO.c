@@ -103,6 +103,7 @@ int main(int argc, char **argv){
 			tagstart = 1;
 		}else if(c == '>'){
 			flag = 0;
+			tagstart = 0;
 		}else{
 			tagstart = 0;
 		}
