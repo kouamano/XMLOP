@@ -22,15 +22,14 @@ while(<>){
 		if($IN_REG >= 1){
 		$LEVEL = $LEVEL + 1;
 		}else{
-		#$PREV_REG = 0;
 		$IN_REG = 1;
 		$LEVEL = 1;
 		}
 		$tag = $1;
 		@tmp = split(/ /,$tag);
-		$tagname = shift(@tmp);
-		$tagname =~ s/^<//;
-		$tagname = "</".$tagname;
+		#$tagname = shift(@tmp);
+		#$tagname =~ s/^<//;
+		#$tagname = "</".$tagname;
 		#print "$_ : $IN_REG/$LEVEL === $tagname\n";
 	}elsif($IN_REG > 0 && $_ =~ /^[0-9].*:s:.*/){
 		$LEVEL = $LEVEL + 1;
