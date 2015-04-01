@@ -30,6 +30,7 @@ while(<>){
 	}
 	if($_ =~ /:s:<xref/){
 		if($prt_st == 0){
+			print "$CUR_sec\n";
 			print "$CUR_p_st\n";
 			$prt_st = 1;
 		}
