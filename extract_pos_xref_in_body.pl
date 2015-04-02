@@ -18,8 +18,8 @@ while(<>){
 		$prt_st = 0;
 		$prt_en = 0;
 		$count = 0;
-		$prt_pcl = 0;
 		$prt_pop = 0;
+		$prt_pcl = 0;
 	}
 	if($_ =~ /:s:<body>:/){
 		$IN_body = 1;
@@ -59,8 +59,8 @@ while(<>){
 			if($prt_en == 1 && $prt_pop == 1){
 				print "$CUR_p_en\n";
 				$prt_en = 0;
-				$prt_pcl = 1;
 				$prt_pop = 0;
+				$prt_pcl = 1;
 			}
 			$prt_st = 0;
 		}
