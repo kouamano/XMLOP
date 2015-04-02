@@ -38,7 +38,9 @@ foreach(@arr){
 		foreach(@line){
 			chomp;
 			#print $_;
-			$reg = (split(":",$_))[1];
+			@rega = split(":",$_);
+			#$reg = (split(":",$_))[1];
+			$reg = $rega[$#rega];
 			$com= "streamcut if=\'$fname\' span=$reg\n";
 			$res = `$com`;
 			$res =~ s/\s/ /ig;
