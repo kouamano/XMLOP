@@ -8,6 +8,8 @@ $CUR_p_en = "";
 #$CUR_p_lv_en = 0;
 $prt_st = 0;
 $prt_en = 0;
+$prt_pop = 0;
+$prt_pcl = 0;
 $count = 0;
 while(<>){
 	chomp;
@@ -16,6 +18,8 @@ while(<>){
 		$prt_st = 0;
 		$prt_en = 0;
 		$count = 0;
+		$prt_pcl = 0;
+		$prt_pop = 0;
 	}
 	if($_ =~ /:s:<body>:/){
 		$IN_body = 1;
@@ -38,6 +42,8 @@ while(<>){
 				print "$CUR_sec\n";
 				print "$CUR_p_st\n";
 				$prt_st = 1;
+				$prt_pop = 1;
+				$prt_pcl = 0;
 			}
 			print "$_\t";
 			#print "$CUR_p_st\t$_\t";
@@ -50,9 +56,11 @@ while(<>){
 			$CUR_p_en = $_;
 			#@tmp = split(/\t/,$CUR_p_en);
 			#$CUR_p_lv_en = pop(@tmp);
-			if($prt_en == 1){
+			if($prt_en == 1 && $prt_pop == 1){
 				print "$CUR_p_en\n";
 				$prt_en = 0;
+				$prt_pcl = 1;
+				$prt_pop = 0;
 			}
 			$prt_st = 0;
 		}
