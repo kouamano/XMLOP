@@ -80,7 +80,7 @@ while(<>){
 		$cur_end_tag[$end_lv] = $end_tag;
 		#print "$print_end_xref / $print_over_end_xref / $print_anyend_tag\n";
 		if($print_end_xref >= 1 && $print_over_end_xref >= 1 && $upper_xref_lv == $end_lv && $print_anyend_tag == 0){
-			print ";;$_\n";
+			print "$_\t;;\n";
 			$print_anyend_tag++;
 			$print_hierar = 0;
 		}
