@@ -62,7 +62,7 @@ while(<>){
 			$print_hierar = 1;
 			print "\n";
 		}
-		print "$prev_tag_lv[$upper_xref_lv]\t$upper_xref_lv\t";
+		#print "$prev_tag_lv[$upper_xref_lv]\t$upper_xref_lv\t";
 		print "$_\t";
 	}
 	if($_ =~ /:e:<\/xref>:/){
