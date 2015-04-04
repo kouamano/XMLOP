@@ -8,6 +8,10 @@ $IN_body = 0;
 $print_end_xerf = 0;
 $print_over_end_xref = 0;
 $print_anyend_tag = 0;
+$upper_sec = "";
+$print_sec = 0;
+$print_hierar = 0;
+$lv_count = 0;
 while(<>){
 	chomp;
 	if($_ =~ /^\.\//){
@@ -18,6 +22,9 @@ while(<>){
 		@prev_end_tag_lv = ();
 		$print_end_xref = 0;
 		$print_over_end_xref = 0;
+		$upper_sec = "";
+		$print_sec = 0;
+		$print_hierar = 0;
 		print "$_\n";
 	}
 	if($_ =~ /:s:<body>:/){
@@ -31,6 +38,9 @@ while(<>){
 
 	if($IN_body == 1){
 
+	if($_ =~ /:s:<sec/){
+		$upper_sec = $_;
+	}
 	if($_ =~ /:s:</){
 		($tag,$lv) = split(/\t/,$_);
 		$prev_tag_lv[$lv] = $cur_tag_lv[$lv];
@@ -39,6 +49,19 @@ while(<>){
 	if($_ =~ /:s:<xref/){
 		($xref_tag,$xref_lv) = split(/\t/,$_);
 		$upper_xref_lv = $xref_lv-1;
+		#if($print_sec == 0){
+		#	print "\t$upper_sec\n";
+		#	$print_sec == 1;
+		#}
+		if($print_hierar == 0){
+			$lv_count = 0;
+			foreach(@cur_tag_lv){
+				print "$_ [$lv_count]\t";
+				$lv_count++;
+			}
+			$print_hierar = 1;
+			print "\n";
+		}
 		print "$prev_tag_lv[$upper_xref_lv]\t$upper_xref_lv\t";
 		print "$_\t";
 	}
