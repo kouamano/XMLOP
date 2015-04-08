@@ -66,27 +66,4 @@ while(<>){
 		push(@arr,$_);
 	}
 }
-#$sarr = join('',@arr);
-#@arr = split(/;;;\t0\n/,$sarr);
-#foreach(@arr){
-#	$_ =~ s/^([^\n]+)\t0\n//;
-#	$fname = $1;
-#	$fname =~ s/^\.\///;
-#	print "$dir/$fname\n";
-#	#print "$_";
-#	@brr = split(/;;\n/,$_);
-#	#$count = @brr;
-#	#print "ELM:$count:\n";
-#	foreach(@brr){
-#		if($_ =~ /^ \[/){
-#			#print "$_;;\n";
-#			$_ =~ s/^([^\n]+)\n//;
-#			$head = $1;
-#			print "$head\n";
-#			$_ =~ s/\n([^\n]+)$//;
-#			$tail = $1;
-#			print "$tail\n";
-#		}
-#	}
-#	print "\n;;;\n";
-#}
+
