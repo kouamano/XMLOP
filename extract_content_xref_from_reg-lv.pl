@@ -2,7 +2,7 @@
 
 $dir = $ARGV[0];
 @arr = ();
-@brr = ();
+#@brr = ();
 $count = 0;
 $head_count = 0;
 $tail_count = 0;
@@ -16,7 +16,7 @@ while(<>){
 		$count = 0;
 		foreach(@arr){
 			#print "+++$_";
-			@brr = ();
+			#@brr = ();
 			#$head_count = 0;
 			#$tail_count = 0;
 			$count++;
@@ -42,7 +42,7 @@ while(<>){
 					$pair_h =~ s/ \[[0-9]+\]$//;
 					print "PAIR\t$pair_h";
 					print "\t$tail\n";
-					print "LV\t$tail_lv\n";
+					print "LV\t$tail_lv\t$head\n";
 					$pair_h =~ /^([0-9]+)-/;
 					$region_s = $1;
 					$tail =~ /^[0-9]+-([0-9]+)/;
