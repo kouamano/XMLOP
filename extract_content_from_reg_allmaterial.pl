@@ -9,6 +9,7 @@ while(<>){
 	if($_ =~ /;;;/){
 		$fname = shift(@arr);
 		$fname =~ s/^\.\///;
+		$fname =~ s/\n$//;
 		$fname = $dir."/".$fname;
 		print $fname;
 		foreach(@arr){
@@ -21,17 +22,19 @@ while(<>){
 				$_ =~ s/^[0-9]+-([0-9]+).*//;
 				$reg_end = $1;
 				$reg = "$reg_start-$reg_end";
-				print "SPAN	$reg\n";
+				#print "SPAN	$reg\n";
 				$com = "streamcut if=\'$fname\' span=$reg\n";
 				$res = `$com`;
-				$res =~ s/\s/ /;
-				print "CONTENT	$res";
+				$res =~ s/\s/ /g;
+				#print "CONTENT\t$res";
+				print "\t$res";
 				$reg_start = "";
 				$reg_end = "";
 				$res = "";
 			}
 		}
-		print ";;;\n";
+		#print ";;;\n";
+		print "\n";
 		@arr = ();
 	}else{
 		push(@arr,$_);
