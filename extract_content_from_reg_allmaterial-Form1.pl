@@ -24,8 +24,8 @@ while(<>){
 				print "SPAN	$reg\n";
 				$com = "streamcut if=\'$fname\' span=$reg\n";
 				$res = `$com`;
-				$res =~ s/\s/ /;
-				print "CONTENT	$res";
+				$res =~ s/\s/ /g;
+				print "CONTENT\t$res";
 				$reg_start = "";
 				$reg_end = "";
 				$res = "";
