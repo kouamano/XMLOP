@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 
 @cur_tag_lv = ();
-@prev_tag_lv = ();
+#@prev_tag_lv = ();
 @cur_end_tag_lv = ();
-@prev_end_tag_lv = ();
+#@prev_end_tag_lv = ();
 $IN_body = 0;
 $print_end_xerf = 0;
 $print_over_end_xref = 0;
@@ -17,9 +17,9 @@ while(<>){
 	if($_ =~ /^\.\//){
 		$IN_body = 0;
 		@cur_tag_lv = ();
-		@prev_tag_lv = ();
+		#@prev_tag_lv = ();
 		@cur_end_tag_lv = ();
-		@prev_end_tag_lv = ();
+		#@prev_end_tag_lv = ();
 		$print_end_xref = 0;
 		$print_over_end_xref = 0;
 		$upper_sec = "";
@@ -43,7 +43,13 @@ while(<>){
 	}
 	if($_ =~ /:s:</){
 		($tag,$lv) = split(/\t/,$_);
-		$prev_tag_lv[$lv] = $cur_tag_lv[$lv];
+
+		#print "LV:$lv:\n";
+		#if($lv < 0){
+		#	print "[[[$_]]]\n";
+		#}
+
+		#$prev_tag_lv[$lv] = $cur_tag_lv[$lv];
 		$cur_tag_lv[$lv] = $tag;
 	}
 	if($_ =~ /:s:<xref/){
@@ -76,7 +82,7 @@ while(<>){
 		$print_over_end_xref++;
 		$print_any_end_tag++;
 		($end_tag,$end_lv) = split(/\t/,$_);
-		$prev_end_tag_lv[$end_lv] = $cur_end_tag_lv[$end_lv];
+		#$prev_end_tag_lv[$end_lv] = $cur_end_tag_lv[$end_lv];
 		$cur_end_tag[$end_lv] = $end_tag;
 		#print "$print_end_xref / $print_over_end_xref / $print_anyend_tag\n";
 		if($print_end_xref >= 1 && $print_over_end_xref >= 1 && $upper_xref_lv == $end_lv && $print_anyend_tag == 0){
