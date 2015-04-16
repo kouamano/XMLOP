@@ -6,7 +6,7 @@ while(<>){
 	if($_ =~ /\.\//){
 		#print "COND:0\n";
 		$current_level = 0;
-		print "$_\t$current_level";
+		print "$_\t$current_level\n";
 	}elsif($_ =~ /:s:/){
 		#print "COND:1\n";
 		$current_level = $current_level + 1;
