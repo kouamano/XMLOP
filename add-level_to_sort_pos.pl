@@ -3,7 +3,7 @@
 $current_level = 0;
 while(<>){
 	chomp;
-	if($_ =~ /\.\//){
+	if($_ =~ /^\.\//){
 		#print "COND:0\n";
 		$current_level = 0;
 		print "$_\t$current_level\n";
