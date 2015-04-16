@@ -1,6 +1,14 @@
 #!/usr/bin/perl
 
-print "./$ARGV[0]\n";
+$fname = $ARGV[0];
+if($fname =~ /^\//){
+	print "$fname\n";
+}elsif($fname =~ /\.\//){
+	print "$fname\n";
+}else{
+	print "./$fname\n";
+}
+
 while(<>){
 	push(@arr,$_);
 }
