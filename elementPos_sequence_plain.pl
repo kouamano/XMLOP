@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 
+print "./$ARGV[0]\n";
 while(<>){
 	push(@arr,$_);
 }
