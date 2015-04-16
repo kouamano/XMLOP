@@ -4,6 +4,7 @@ while(<>){
 	push(@arr,$_);
 }
 $tx = join("",@arr);
+$tx =~ s/\s/ /g;
 @arr = ();
 while($tx =~ /(<[^<>\/!\?][^<>]*[^\/]{0,1}>)/ig){
 	$p = pos($tx);
