@@ -32,7 +32,7 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 	}elsif($target =~ /^<\//){
 		push(@arr,"$s"."-"."$e".":"."e".":$target:\t$lv\n");
 		$lv--;
-	}elsif($target =~ /^<[^<>\/]+\/>$/){
+	}elsif($target =~ /^<[^<>]+\/>$/){
 		push(@arr,"$s"."-"."$e".":"."a".":$target:\n");
 	}elsif($target =~ /^<[^<>\/][^<>]*>$/){
 		$lv++;
