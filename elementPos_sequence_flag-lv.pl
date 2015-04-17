@@ -29,6 +29,8 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 		push(@arr,"$s"."-"."$e".":"."i".":$target:\n");
 	}elsif($target =~ /^<>$/){
 		push(@arr,"$s"."-"."$e".":"."n".":$target:\n");
+	}elsif($target =~ /^<\/>$/){
+		push(@arr,"$s"."-"."$e".":"."n".":$target:\n");
 	}elsif($target =~ /^<\//){
 		push(@arr,"$s"."-"."$e".":"."e".":$target:\t$lv\n");
 		$lv--;
