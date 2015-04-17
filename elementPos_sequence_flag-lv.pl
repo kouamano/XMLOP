@@ -15,6 +15,7 @@ while(<>){
 }
 $tx = join("",@arr);
 $tx =~ s/\s/ /g;
+$tx =~ s/(<!--.*?-->)/$count=0;$sb="";while($count < length($1)){$sb = $sb." "; $count++;};$sb/eg;
 @arr = ();
 while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 	$p = pos($tx);
