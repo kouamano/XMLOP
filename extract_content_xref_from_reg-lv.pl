@@ -42,7 +42,8 @@ while(<>){
 					$pair_h =~ s/ \[[0-9]+\]$//;
 					print "PAIR\t$pair_h";
 					print "\t$tail\n";
-					print "LV\t$tail_lv\t$head\n";
+					#print "LV\t$tail_lv\t$head\n";
+					print "LV\t$tail_lv\t$head";
 					$pair_h =~ /^([0-9]+)-/;
 					$region_s = $1;
 					$tail =~ /^[0-9]+-([0-9]+)/;
