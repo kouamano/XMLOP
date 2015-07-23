@@ -52,6 +52,7 @@ foreach(@brr){
 		#$src =~ s/([^0-9a0zA-Z])($_)([0-9a-zA-Z])/$1<font color="blue">$2<\/font>$3/g;
 	}
 	$src =~ s/([a-z0-9\/<][a-zA-Z0-9\/<][a-zA-Z0-9\/][a-zA-Z0-9>\]\)]\. )/$1<br><\/br><;\/>\n/g;	#センテンス後端に改行を挿入。
+	$src =~ s/([A-Z][A-Z][A-Z][A-Z]\. )/$1<br><\/br><;\/>\n/g;	#センテンス後端に改行を挿入。
 	print "<br> </br> $head <br> </br>";
 	print $src;
 	print "\n<;;/>\n";
