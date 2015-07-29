@@ -71,6 +71,9 @@ if($ie == 1){
 $numcols = @terms;
 @colors = ();
 
+print "<html>";
+print "<head></head>";
+print "<body>";
 open(IN,$src);
 while(<IN>){
 	chomp;
@@ -109,15 +112,18 @@ while(<IN>){
 		}
 		#print "++ $sum | $numcols ++";
 		if($sum == $numcols){
-			print "$_ <;/> ";
+			print "$_ <;/> <br></br>";
 		}
 	}
 	###非対象カラムの出力
 	for($i=$clm+1;$i<$numclm;$i++){
 		print "$linearr[$i]\t";
 	}
+	print "<hr></hr>";
 	print "\n";
 }
 close(IN);
+print "</body>";
+print "</html>";
 
 
