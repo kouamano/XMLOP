@@ -12,7 +12,7 @@ $ie = 0;
 sub _help {
 	print "USAGE:\n";
 	print " insTxColor_to_html.pl src=<src file> clm=<column> trm=<termlist file> clr=<color> .\n";
-	print " <column>: column # of src file; start at 0; sep:TAB .\n";
+	print " <column>: column # of src file; start at 0; sep:TAB; the targets are the columns after # .\n";
 	print " <termlist file>: escaped term list.\n";
 }
 
