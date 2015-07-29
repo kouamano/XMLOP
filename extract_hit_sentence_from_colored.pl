@@ -91,6 +91,7 @@ while(<IN>){
 		print "$linearr[$i]\t";
 	}
 	print "<br></br>";
+	print "<;;>";
 	###処理
 	####センテンス後端に<;/> を挿入
 	$target =~ s/([a-z0-9\/<][a-zA-Z0-9\/<][a-zA-Z0-9\/][a-zA-Z0-9>\]\)]\. )/$1<;\/> /g;
@@ -126,6 +127,7 @@ while(<IN>){
 		}
 		$llcount++;
 	}
+	print "</;;>";
 	###非対象カラムの出力
 	for($i=$clm+1;$i<$numclm;$i++){
 		print "$linearr[$i]\t";
