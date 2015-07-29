@@ -99,6 +99,8 @@ while(<IN>){
 	#print @target;
 	###1行中の複数のセンテンス
 	$llcount = 0;
+	@colors = ();
+	$sum = 0;
 	foreach(@target){
 		#print ";;$_;;";
 		@colors = ();
