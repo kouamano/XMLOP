@@ -73,6 +73,7 @@ $numcols = @terms;
 @colors = ();
 $lcount = 0;
 $llcount = 0;
+@cterms = ();
 
 print "<html>\n";
 print "<head></head>\n";
@@ -110,10 +111,12 @@ while(<IN>){
 		#print ";;$_;;";
 		@colors = ();
 		$sum = 0;
+		@cterms = ();
 		####1センテンスごとの処理
 		for($i=0;$i<$numcols;$i++){
-			if($_ =~ /color="$terms[$i]"/){
+			if($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/){
 				$colors[$i] = 1;
+				push(@cterms,$1);
 			}else{
 				$colors[$i] = 0;
 			}
@@ -127,7 +130,13 @@ while(<IN>){
 		}
 		#print "++ $sum | $numcols ++";
 		if($sum == $numcols){
-			print "[[$llcount]] $_ <;/> <br></br>";
+			print "[[$llcount]] ";
+			print "{";
+			foreach(@cterms){
+				print "$_;";
+			}
+			print "}";
+			print " $_ <;/> <br></br>";
 		}
 		$llcount++;
 	}
