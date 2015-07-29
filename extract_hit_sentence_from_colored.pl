@@ -84,6 +84,7 @@ while(<IN>){
 	for($i=0;$i<$clm;$i++){
 		print "$linearr[$i]\t";
 	}
+	print "<br></br>";
 	###処理
 	####センテンス後端に<;/> を挿入
 	$target =~ s/([a-z0-9\/<][a-zA-Z0-9\/<][a-zA-Z0-9\/][a-zA-Z0-9>\]\)]\. )/$1<;\/> /g;
