@@ -12,7 +12,7 @@ $ie = 0;
 # subroutine
 sub _help {
 	print "USAGE:\n";
-	print " extract_hit_sentence_from_colored.pl src=<src file> clm=<column No> terms=<term list comma sep>.\n"
+	print " extract_hit_sentence_from_colored.pl src=<src file> clm=<column No> terms=<term list comma sep>.\n";
 	print " <column>: targets are columns after n-th.\n";
 }
 
