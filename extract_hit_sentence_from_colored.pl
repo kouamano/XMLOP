@@ -114,11 +114,15 @@ while(<IN>){
 		@cterms = ();
 		####1センテンスごとの処理
 		for($i=0;$i<$numcols;$i++){
-			if($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/){
+			#if($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
+			#	$colors[$i] = 1;
+			#	push(@cterms,$1);
+			#}else{
+			#	$colors[$i] = 0;
+			#}
+			while($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
 				$colors[$i] = 1;
 				push(@cterms,$1);
-			}else{
-				$colors[$i] = 0;
 			}
 		}
 		#print " -- @colors -- ";
