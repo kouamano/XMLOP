@@ -75,11 +75,15 @@ print "<html>\n";
 print "<head></head>\n";
 print "<body>\n";
 open(IN,$src);
+$lcount = 0;
 while(<IN>){
 	chomp;
 	@linearr = split(/\t/,$_);
 	$numclm = @linearr;
 	$target = $linearr[$clm];
+	$lcount++;
+	###行シークエンス番号の出力
+	print "[$lcount]\t";
 	###非対象カラムの出力
 	for($i=0;$i<$clm;$i++){
 		print "$linearr[$i]\t";
