@@ -70,6 +70,8 @@ if($ie == 1){
 @terms = split(",",$trm);
 $numcols = @terms;
 @colors = ();
+$lcount = 0;
+$llcount = 0;
 
 print "<html>\n";
 print "<head></head>\n";
@@ -81,9 +83,9 @@ while(<IN>){
 	@linearr = split(/\t/,$_);
 	$numclm = @linearr;
 	$target = $linearr[$clm];
-	$lcount++;
 	###行シークエンス番号の出力
 	print "[$lcount]\t";
+	$lcount++;
 	###非対象カラムの出力
 	for($i=0;$i<$clm;$i++){
 		print "$linearr[$i]\t";
@@ -96,6 +98,7 @@ while(<IN>){
 	@target = split("<;/> ",$target);
 	#print @target;
 	###1行中の複数のセンテンス
+	$llcount = 0;
 	foreach(@target){
 		#print ";;$_;;";
 		@colors = ();
@@ -117,8 +120,9 @@ while(<IN>){
 		}
 		#print "++ $sum | $numcols ++";
 		if($sum == $numcols){
-			print "$_ <;/> <br></br>";
+			print "[[$llcount]] $_ <;/> <br></br>";
 		}
+		$llcount++;
 	}
 	###非対象カラムの出力
 	for($i=$clm+1;$i<$numclm;$i++){
