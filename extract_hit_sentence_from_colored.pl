@@ -71,9 +71,9 @@ if($ie == 1){
 $numcols = @terms;
 @colors = ();
 
-print "<html>";
-print "<head></head>";
-print "<body>";
+print "<html>\n";
+print "<head></head>\n";
+print "<body>\n";
 open(IN,$src);
 while(<IN>){
 	chomp;
@@ -124,7 +124,7 @@ while(<IN>){
 	print "\n";
 }
 close(IN);
-print "</body>";
-print "</html>";
+print "</body>\n";
+print "</html>\n";
 
 
