@@ -12,7 +12,8 @@ $ie = 0;
 # subroutine
 sub _help {
 	print "USAGE:\n";
-	printf " extract_hit_sentence_from_colored.pl src=<src file> clm=<column No> terms=<term list comma sep>.\n"
+	print " extract_hit_sentence_from_colored.pl src=<src file> clm=<column No> terms=<term list comma sep>.\n"
+	print " <column>: targets are columns after n-th.\n";
 }
 
 sub _check {
@@ -82,20 +83,23 @@ while(<IN>){
 	chomp;
 	@linearr = split(/\t/,$_);
 	$numclm = @linearr;
-	$target = $linearr[$clm];
+	#$target = $linearr[$clm];
 	###行シークエンス番号の出力
 	print "[$lcount]\t";
 	$lcount++;
-	###非対象カラムの出力
+	###非対象カラムの出力・shift
 	for($i=0;$i<$clm;$i++){
-		print "$linearr[$i]\t";
+		$out = shift(@linearr);
+		print "$out\t";
 	}
+	###target作成
+	$target = join("\t",@linearr);
 	print "<br></br>";
 	print "<;;/>";
 	###処理
 	####センテンス後端に<;/> を挿入
-	$target =~ s/([a-z0-9\/<][a-zA-Z0-9\/<][a-zA-Z0-9\/][a-zA-Z0-9>\]\)]\. )/$1<;\/> /g;
-	$target =~ s/([A-Z][A-Z][A-Z][A-Z]\. )/$1<;\/> /g;
+	$target =~ s/([a-z0-9\/<][a-zA-Z0-9\/<][a-zA-Z0-9\/][a-zA-Z0-9>\]\)]\.\s)/$1<;\/> /g;
+	$target =~ s/([A-Z][A-Z][A-Z][A-Z]\.\s)/$1<;\/> /g;
 	@target = split("<;/> ",$target);
 	#print @target;
 	###1行中の複数のセンテンス
@@ -128,10 +132,6 @@ while(<IN>){
 		$llcount++;
 	}
 	print "<;;/>";
-	###非対象カラムの出力
-	for($i=$clm+1;$i<$numclm;$i++){
-		print "$linearr[$i]\t";
-	}
 	print "<hr></hr>";
 	print "\n";
 }
