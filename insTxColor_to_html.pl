@@ -84,23 +84,22 @@ while(<IN>){
 	chomp;
 	@linearr = split(/\t/,$_);
 	$numofclm = @linearr;
-	###対象外カラムのprint
+	###対象外カラムのprint・shift
 	for($i=0;$i<$clm;$i++){
-		print "$linearr[$i]\t";
+		$out = shift(@linearr);
+		print "$out\t";
 	}
+	###join
+	$tgt = join("\t",@linearr);
 	###処理
-	$tgt = $linearr[$clm];
 	$tgt = " $tgt ";
 	foreach(@termlist){
 		$tgt =~ s/([ \.,:;\/\?\-\^\(\[>])($_)([ \.,:;\/\?\-\^\)\]<])/$1<font color="$clr">$2<\/font>$3/g
 	}
 	$tgt =~ s/^ +//;
 	$tgt =~ s/ +$//;
-	print "$tgt\t";
-	###対象外カラムのprint
-	for($i=$clm+1;$i<$numofclm;$i++){
-		print "$linearr[$i]\t";
-	}
+	print "$tgt";
 	print "\n";
 }
+close(IN);
 
