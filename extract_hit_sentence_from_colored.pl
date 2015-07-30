@@ -94,11 +94,13 @@ while(<IN>){
 		print "$out\t";
 	}
 	###target作成
-	$target = join("\t",@linearr);
+	$target = join("<;/> ",@linearr);
 	print "<br></br>";
 	print "<;;/>";
 	###処理
 	####センテンス後端に<;/> を挿入
+	$target =~ s/<\/sec><sec/<\/sec><;\/> <sec/g;
+	$target =~ s/<\/p><p>/<\/p><;\/> <p>/g;
 	$target =~ s/([a-z0-9\/\<][a-zA-Z0-9\/\<][a-zA-Z0-9\/][a-zA-Z0-9\>]\.\s)/$1<;\/> /g;
 	$target =~ s/([a-z0-9\/\<][a-zA-Z0-9\/\<][a-zA-Z0-9\/][a-zA-Z0-9\>][\)\]]\.\s)/$1<;\/> /g;
 	$target =~ s/([A-Z][0-9A-Z][0-9A-Z][0-9A-Z]\.\s)/$1<;\/> /g;
