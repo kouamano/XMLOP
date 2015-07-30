@@ -99,7 +99,8 @@ while(<IN>){
 	print "<;;/>";
 	###処理
 	####センテンス後端に<;/> を挿入
-	$target =~ s/([a-z0-9\/<][a-zA-Z0-9\/<][a-zA-Z0-9\/][a-zA-Z0-9>\]\)]\.\s)/$1<;\/> /g;
+	$target =~ s/([a-z0-9\/\<][a-zA-Z0-9\/\<][a-zA-Z0-9\/][a-zA-Z0-9\>]\.\s)/$1<;\/> /g;
+	$target =~ s/([a-z0-9\/\<][a-zA-Z0-9\/\<][a-zA-Z0-9\/][a-zA-Z0-9\>\]\)]\.\s)/$1<;\/> /g;
 	$target =~ s/([A-Z][A-Z][A-Z][A-Z]\.\s)/$1<;\/> /g;
 	@target = split("<;/> ",$target);
 	#print @target;
