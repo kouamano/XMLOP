@@ -137,7 +137,7 @@ while(<IN>){
 			print "[[$llcount]] ";
 			print "{";
 			foreach(@cterms){
-				print "$_;";
+				print "$_ ; ";
 			}
 			print "}";
 			print " $_ <;/> <br></br>";
