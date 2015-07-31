@@ -2,7 +2,7 @@
 
 while(<>){
 	chomp;
-	$_ =~ s/[\s\.,;<>\(\)\[\]"]+/ /ig;	#/usr/local/var/perl_word_delimiter.patt.1
+	$_ =~ s/[\s\.,;<>\(\)\[\]\"]+/ /g;	#/usr/local/var/perl_word_delimiter.patt.1
 	$_ =~ s/^\s+//;
 	$_ =~ s/\s+$//;
 	print " $_";
