@@ -73,7 +73,8 @@ $numcols = @terms;
 @colors = ();
 $lcount = 0;
 $llcount = 0;
-@cterms = ();
+#@cterms = ();
+%cterms = ();
 
 print "<html>\n";
 print "<head></head>\n";
@@ -116,7 +117,8 @@ while(<IN>){
 		#print ";;$_;;";
 		@colors = ();
 		$sum = 0;
-		@cterms = ();
+		#@cterms = ();
+		%cterms = ();
 		####1センテンスごとの処理
 		for($i=0;$i<$numcols;$i++){
 			#if($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
@@ -125,9 +127,11 @@ while(<IN>){
 			#}else{
 			#	$colors[$i] = 0;
 			#}
-			while($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
+			#while($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
+			while($_ =~ /<font color="($terms[$i])">([^<>]+?)<\/font>/g){
 				$colors[$i] = 1;
-				push(@cterms,$1);
+				#push(@cterms,$1);
+				$cterms{$1} = $cterms{$1}." ; "."<font color=\"$terms[$i]\">".$2."</font>";
 			}
 		}
 		#print " -- @colors -- ";
@@ -141,8 +145,11 @@ while(<IN>){
 		if($sum == $numcols){
 			print "[[$llcount]] ";
 			print "{";
-			foreach(@cterms){
-				print "$_ ; ";
+			#foreach(@cterms){
+			#	print "$_ ; ";
+			#}
+			while(my ($key,$val) = each(%cterms)){
+				print "{$key ; $val} ";
 			}
 			print "}";
 			print " $_ <;/> <br></br>";
