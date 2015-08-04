@@ -148,7 +148,7 @@ while(<IN>){
 			print "}";
 			#sha1の計算・print
 			$dig = sha1_hex($_);
-			print " [[$dig]]";
+			print " [[SHA1:$dig]]";
 			print " $_ <;/> <br></br>";
 		}
 		$llcount++;
