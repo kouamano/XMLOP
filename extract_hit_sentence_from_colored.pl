@@ -151,6 +151,25 @@ while(<IN>){
 			$dig = sha1_hex($_);
 			print " [[SHA1:$dig]]";
 			print " $_ <;/> <br></br>";
+			#patternの出力
+			$_ =~ s/<font color="red">[^<>]+?<\/font>/ \| [[:O:]] \| /g;
+			$_ =~ s/<font color="blue">[^<>]+?<\/font>/ \| [[:R:]] \| /g;
+			$_ =~ s/<[^<>]+?>//g;
+			$_ =~ s/<\/[^<>]+?>//g;
+			$_ =~ s/<[^<>]+?\/>//g;
+			@line = split(/ \| /,$_);
+			print "[";
+			foreach(@line){
+				if($_ =~ /\[\[:O:\]\]/){
+					print "$_";
+				}elsif($_ =~ /\[\[:R:\]\]/){
+					print "$_";
+				}else{
+					$_ =~ s/[a-zA-Z0-9&#]+/\[\[:W:\]\]/g;
+					print "$_";
+				}
+			}
+			print "]";
 		}
 		$llcount++;
 	}
