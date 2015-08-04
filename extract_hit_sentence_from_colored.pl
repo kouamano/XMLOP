@@ -85,7 +85,6 @@ while(<IN>){
 	chomp;
 	@linearr = split(/\t/,$_);
 	$numclm = @linearr;
-	#$target = $linearr[$clm];
 	###行シークエンス番号の出力
 	print "[$lcount]\t";
 	$lcount++;
@@ -108,7 +107,6 @@ while(<IN>){
 	$target =~ s/([A-Z][0-9A-Z][0-9A-Z][0-9A-Z][\)\]]\.\s)/$1<;\/> /g;
 	####センテンスを区切りで分断、配列へ
 	@target = split("<;/> ",$target);
-	#print @target;
 	###1行中の複数のセンテンス
 	$llcount = 0;
 	@colors = ();
@@ -121,12 +119,6 @@ while(<IN>){
 		%cterms = ();
 		####1センテンスごとの処理
 		for($i=0;$i<$numcols;$i++){
-			#if($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
-			#	$colors[$i] = 1;
-			#	push(@cterms,$1);
-			#}else{
-			#	$colors[$i] = 0;
-			#}
 			#while($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
 			while($_ =~ /<font color="($terms[$i])">([^<>]+?)<\/font>/g){
 				$colors[$i] = 1;
@@ -141,7 +133,6 @@ while(<IN>){
 				$sum++;
 			}
 		}
-		#print "++ $sum | $numcols ++";
 		if($sum == $numcols){
 			print "[[$llcount]] ";
 			print "{";
