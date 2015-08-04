@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+use Digest::SHA1 qw(sha1_hex);
+
 # vars
 $help = 0;
 $check = 0;
@@ -67,7 +69,7 @@ if($ie == 1){
 	exit(0);
 }
 
-##terms
+#terms
 @terms = split(",",$trm);
 $numcols = @terms;
 @colors = ();
@@ -85,29 +87,29 @@ while(<IN>){
 	chomp;
 	@linearr = split(/\t/,$_);
 	$numclm = @linearr;
-	###行シークエンス番号の出力
+	#行シークエンス番号の出力
 	print "[$lcount]\t";
 	$lcount++;
-	###非対象カラムの出力・shift
+	#非対象カラムの出力・shift
 	for($i=0;$i<$clm;$i++){
 		$out = shift(@linearr);
 		print "$out\t";
 	}
-	###target作成
+	#target作成
 	$target = join("<;/> ",@linearr);
 	print "<br></br>";
 	print "<;;/>";
-	###処理
-	####センテンス後端に<;/> を挿入
+	#処理
+	#センテンス後端に<;/> を挿入
 	$target =~ s/<\/sec><sec/<\/sec><;\/> <sec/g;
 	$target =~ s/<\/p><p>/<\/p><;\/> <p>/g;
 	$target =~ s/([a-z0-9\/\<][a-zA-Z0-9\/\<][a-zA-Z0-9\/][a-zA-Z0-9\>]\.\s)/$1<;\/> /g;
 	$target =~ s/([a-z0-9\/\<][a-zA-Z0-9\/\<][a-zA-Z0-9\/][a-zA-Z0-9\>][\)\]]\.\s)/$1<;\/> /g;
 	$target =~ s/([A-Z][0-9A-Z][0-9A-Z][0-9A-Z]\.\s)/$1<;\/> /g;
 	$target =~ s/([A-Z][0-9A-Z][0-9A-Z][0-9A-Z][\)\]]\.\s)/$1<;\/> /g;
-	####センテンスを区切りで分断、配列へ
+	#センテンスを区切りで分断、配列へ
 	@target = split("<;/> ",$target);
-	###1行中の複数のセンテンス
+	#1行中の複数のセンテンス
 	$llcount = 0;
 	@colors = ();
 	$sum = 0;
@@ -117,7 +119,7 @@ while(<IN>){
 		$sum = 0;
 		#@cterms = ();
 		%cterms = ();
-		####1センテンスごとの処理
+		#1センテンスごとの処理
 		for($i=0;$i<$numcols;$i++){
 			#while($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
 			while($_ =~ /<font color="($terms[$i])">([^<>]+?)<\/font>/g){
@@ -127,13 +129,14 @@ while(<IN>){
 			}
 		}
 		#print " -- @colors -- ";
-		####$colorsを数値配列として処理できない
+		#$colorsを数値配列として処理できない
 		foreach(@colors){
 			if($_ == 1){
 				$sum++;
 			}
 		}
 		if($sum == $numcols){
+			#センテンスIDをprint
 			print "[[$llcount]] ";
 			print "{";
 			#foreach(@cterms){
@@ -143,6 +146,9 @@ while(<IN>){
 				print "{$key ; $val} ";
 			}
 			print "}";
+			#sha1の計算・print
+			$dig = sha1_hex($_);
+			print "[[$dig]] <;/>";
 			print " $_ <;/> <br></br>";
 		}
 		$llcount++;
