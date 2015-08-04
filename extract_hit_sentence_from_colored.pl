@@ -109,17 +109,17 @@ while(<IN>){
 	$target =~ s/([A-Z][0-9A-Z][0-9A-Z][0-9A-Z][\)\]]\.\s)/$1<;\/> /g;
 	#センテンスを区切りで分断、配列へ
 	@target = split("<;/> ",$target);
-	#1行中の複数のセンテンス
+	#1行中の複数のセンテンス候補
 	$llcount = 0;
 	@colors = ();
 	$sum = 0;
 	foreach(@target){
+		#1センテンス候補ごとの処理
 		#print ";;$_;;";
 		@colors = ();
 		$sum = 0;
 		#@cterms = ();
 		%cterms = ();
-		#1センテンスごとの処理
 		for($i=0;$i<$numcols;$i++){
 			#while($_ =~ /(<font color="$terms[$i]">[^<>]+?<\/font>)/g){
 			while($_ =~ /<font color="($terms[$i])">([^<>]+?)<\/font>/g){
@@ -148,7 +148,7 @@ while(<IN>){
 			print "}";
 			#sha1の計算・print
 			$dig = sha1_hex($_);
-			print "[[$dig]] <;/>";
+			print " [[$dig]]";
 			print " $_ <;/> <br></br>";
 		}
 		$llcount++;
