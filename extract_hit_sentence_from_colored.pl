@@ -150,7 +150,7 @@ while(<IN>){
 			#sha1の計算・print
 			$dig = sha1_hex($_);
 			print " [[SHA1:$dig]]";
-			print " $_<;/><br></br>";
+			print " $_<+/><br></br>";
 			#patternの出力
 			$_ =~ s/<font color="red">[^<>]+?<\/font>/ \| [[:O:]] \| /g;
 			$_ =~ s/<font color="blue">[^<>]+?<\/font>/ \| [[:R:]] \| /g;
