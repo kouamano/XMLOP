@@ -55,6 +55,7 @@ foreach(@brr){
 	$src =~ s/([A-Z][A-Z0-9][A-Z0-9][A-Z0-9]\. )/$1<br><\/br><;\/>\n/g;	#センテンス後端に改行を挿入。
 	@src = split(/<;\/>/,$src);
 	@ssel = ();
+	$hit = 0;
 	foreach(@src){
 		$red = 0;
 		$blu = 0;
@@ -66,17 +67,20 @@ foreach(@brr){
 		}
 		if($red == 1 && $blu == 1){
 			push(@ssel,$_);
+			$hit++;
 		}
 	}
-	$src = join("<;/>",@ssel);
-	print "<br> </br> $head <br> </br>";
-	print $src;
-	print "\n<;;/>\n";
-	print $orglist;
-	print "\n<;;/>\n";
-	print $reslist;
-	print "\n<;;;/>\n";
-	print "<hr> </hr>\n";
+	if($hit > 0){
+		$src = join("<;/>",@ssel);
+		print "<br> </br> $head <br> </br>";
+		print $src;
+		print "\n<;;/>\n";
+		print $orglist;
+		print "\n<;;/>\n";
+		print $reslist;
+		print "\n<;;;/>\n";
+		print "<hr> </hr>\n";
+	}
 }
 
 print "</body>\n";
