@@ -14,7 +14,7 @@ plist = root[1]
 plen = len(plist)
 itrs = range(1,plen)
 for i in itrs:
-  print plist[i][0].text, plist[i][1].text, "\t", plist[i][2].text, "\t",
+  print plist[i][0].text + " " + plist[i][1].text + "\t" + plist[i][2].text + "\t",
   for url in plist[i][4]:
     print url.text, ";",
   print
