@@ -48,10 +48,10 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 			}
 		}else{
 			if($op == 1){
-				$msg = "E: $current";
+				$msg = "F: $current";
 			}elsif($op == 2){
 				$hier = join("/",@stack);
-				$msg = "E: $current"."/$hier";
+				$msg = "F: $current"."/$hier";
 			}
 		}
 	}
