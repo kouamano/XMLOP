@@ -13,9 +13,13 @@ if($fname =~ /^\//){
 	print "./$fname\n";
 }
 
-while(<>){
+
+open(IN,$fname);
+while(<IN>){
 	push(@arr,$_);
 }
+close(IN);
+
 $tx = join("",@arr);
 $tx =~ s/\s/ /g;
 $tx =~ s/(<!--.*?-->)/$count=0;$sb="";while($count < length($1)){$sb = $sb." "; $count++;};$sb/eg;
