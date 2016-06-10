@@ -44,14 +44,14 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 				$msg = "T";
 			}elsif($op == 2){
 				$hier = join("/",@stack);
-				$msg = "T: $current"."/$hier";
+				$msg = "T: /$hier/";
 			}
 		}else{
 			if($op == 1){
 				$msg = "F: $current";
 			}elsif($op == 2){
 				$hier = join("/",@stack);
-				$msg = "F: $current"."/$hier";
+				$msg = "F: /$hier/".": $current";
 			}
 		}
 	}
