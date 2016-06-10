@@ -31,7 +31,10 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 	$stk = "";
 	$cls = "";
 	$current = "";
-	if($target =~ /(^<[^\/!\?][^\s>]+)/){
+	#print "::: $target :::";
+	if($target =~ /.*\/>/){
+		#print "match";
+	}elsif($target =~ /(^<[^\/!\?][^\s>]+)/){
 		$stk = $1;
 		$stk =~ s/^<//;
 		push(@stack,$stk);
