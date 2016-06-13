@@ -83,7 +83,7 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 		push(@arr,"$s"."-"."$e".":"."a".":$target:\n");
 	}elsif($target =~ /^<[^<>\/][^<>]*>$/){
 		$lv++;
-		push(@arr,"$s"."-"."$e".":"."s".":$target:\t$lv\n");
+		push(@arr,"$s"."-"."$e".":"."s".":$target:\t$lv\t$msg\n");
 	}else{
 		push(@arr,"$s"."-"."$e".":"."o".":$target:\n");
 	}
