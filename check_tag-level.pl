@@ -42,8 +42,10 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 		$stk = $1;
 		$stk =~ s/^<//;
 		push(@stack,$stk);
-		$hier = join("/",@stack);
-		$msg = $hier;
+		if($op == 2){
+			$hier = join("/",@stack);
+			$msg = $hier;
+		}
 	}elsif($target =~ /(^<\/[^\s>]+)/){
 		$cls = $1;
 		$cls =~ s/^<\///;
