@@ -38,17 +38,19 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 	#print "::: $target :::";
 	if($target =~ /.*\/>/){
 		#print "match";
-	}elsif($target =~ /(^<[^\/!\?][^\s>]+)/){
+	}elsif($target =~ /(^<[^\/!\?][^\s>]*)/){
 		$stk = $1;
 		$stk =~ s/^<//;
 		push(@stack,$stk);
+		$hier = join("/",@stack);
+		$msg = $hier;
 	}elsif($target =~ /(^<\/[^\s>]+)/){
 		$cls = $1;
 		$cls =~ s/^<\///;
 		$current = pop(@stack);
 		if($current == $cls){
 			if($op == 1){
-				$msg = "T";
+				$msg = "T:";
 			}elsif($op == 2){
 				$hier = join("/",@stack);
 				$msg = "T: /$hier/";
