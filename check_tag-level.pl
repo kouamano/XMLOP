@@ -50,14 +50,14 @@ while($tx =~ /(<[^<>]*[^\/]{0,1}>)/ig){
 		$cls = $1;
 		$cls =~ s/^<\///;
 		$current = pop(@stack);
-		if($current == $cls){
+		if($current == $cls){	#True
 			if($op == 1){
 				$msg = "T:";
 			}elsif($op == 2){
 				$hier = join("/",@stack);
 				$msg = "T: /$hier/";
 			}
-		}else{
+		}else{			#False
 			if($op == 1){
 				$msg = "F: $current";
 			}elsif($op == 2){
