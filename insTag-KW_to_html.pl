@@ -1,9 +1,11 @@
 #!/usr/bin/perl
 
-$srcfile=$ARGV[0];
-$patfile=$ARGV[1];
-$tag="KW";
-$tag=$ARGV[2];
+$srcfile = $ARGV[0];
+$patfile = $ARGV[1];
+$tag = $ARGV[2];
+if ($tag eq "") {
+	$tag = "KW";
+}
 
 open(IN,$patfile);
 while(<IN>){
