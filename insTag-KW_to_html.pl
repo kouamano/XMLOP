@@ -8,6 +8,7 @@ $tag=$ARGV[2];
 open(IN,$patfile);
 while(<IN>){
 	chomp;
+	$_ =~ s/[^\s]+\t//;
 	push(@patarr,$_);
 }
 close(IN);
