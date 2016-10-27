@@ -21,23 +21,19 @@ while(<IN>){
 	@sp = split("<;/>",$target);
 	print "$fname\n";
 	foreach (@sp) {
-		if ($_ =~ /<\/[0-9]*W>.*<ORG>/) {
-			print "\t$_ ;\n";
-			@arr = split(/<ORG>/);
-			$len = @arr;
-			$count = 0;
-			foreach (@arr) {
-				$count++;
-				#print "\t\t$_\n";
-				$_ =~ s/(.+?)(<[0-9]*W>.*?<\/[0-9]*W>)/<RESc>$1<\/RESc>$2/g;
-				print "\t\t[$count]$_ ;;\n";
-				#if ($_ =~ /(.+?)(<[0-9]*W>.*?<\/[0-9]*W>)/){
-				#	$out = $1;
-				#}else{
-				#	$out = "";
-				#}
-				#print "\t<RES_C>$out</RES_C>";
-			}
+		if ($_ =~ /<\/[0-9]*W>.*<\/ORG>/) {
+			#print "\t$_ ;\n";
+			$l = $_;
+			$l =~ s/(.+?)(<[0-9]*W>.*?<\/[0-9]*W>.+?<ORG>.+?<\/ORG>)/<RESc>$1<\/RESc>$2/g;
+			print "\t$l ;\n";
+			#@arr = split(/<\/ORG>/);
+			#$count = 0;
+			#foreach (@arr) {
+			#	$count++;
+			#	#print "\t\t$_\n";
+			#	$_ =~ s/(.+?)(<[0-9]*W>.*?<\/[0-9]*W>)/<RESc>$1<\/RESc>$2/g;
+			#	print "\t\t[$count]$_ ;;\n";
+			#}
 		}
 	}
 	print ";;;\n";
