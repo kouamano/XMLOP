@@ -5,16 +5,23 @@ while(<>){
 	$line = $_;
 	($fname,$target) = split("\t",$line);
 	@sp = split("<;/>",$target);
-	print "$fname ;\n";
+	print "$fname\n";
 	foreach (@sp) {
 		if ($_ =~ /<\/[0-9]*W>.*<ORG>/) {
-			print "\t$_ ;;\n";
+			print "\t$_ ;\n";
 			@arr = split(/<ORG>/);
+			$len = @arr;
+			#print "\tlen: $len\n";
 			foreach (@arr) {
-				$_ =~ /(.*?)(<[0-9]*W>.*?<\/[0-9]*W>.*?)/;
-				print "\t$1";
+				print "\t\t$_";
+				if ($_ =~ /(.+?)(<[0-9]*W>.*?<\/[0-9]*W>.*?)/){
+					$out = $1;
+				}else{
+					$out = "";
+				}
+				print "\t<PhC>$out</PhC>";
+				print " ;;\n";
 			}
-			print ";;\n";
 		}
 	}
 	print ";;;\n";
