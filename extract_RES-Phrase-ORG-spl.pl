@@ -12,15 +12,18 @@ while(<>){
 			@arr = split(/<ORG>/);
 			$len = @arr;
 			#print "\tlen: $len\n";
+			$count = 0;
 			foreach (@arr) {
-				print "\t\t$_";
-				if ($_ =~ /(.+?)(<[0-9]*W>.*?<\/[0-9]*W>.*?)/){
-					$out = $1;
-				}else{
-					$out = "";
-				}
-				print "\t<PhC>$out</PhC>";
-				print " ;;\n";
+				$count++;
+				#print "\t\t$_\n";
+				$_ =~ s/(.+?)(<[0-9]*W>.*?<\/[0-9]*W>)/<RESc>$1<\/RESc>$2/g;
+				print "\t\t[$count]$_ ;;\n";
+				#if ($_ =~ /(.+?)(<[0-9]*W>.*?<\/[0-9]*W>)/){
+				#	$out = $1;
+				#}else{
+				#	$out = "";
+				#}
+				#print "\t<RES_C>$out</RES_C>";
 			}
 		}
 	}
