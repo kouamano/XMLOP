@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-#extract_RES-Phrase-ORG-spl.pl
+#extract_+RES+-Phrase-ORG-spl.pl
+#insert <RESc> tag(s) into a sentence.
 while(<>){
 	chomp;
 	$line = $_;
