@@ -28,14 +28,6 @@ while(<IN>){
 			#$l =~ s/(<ORG>.+?<\/ORG>.*?<[0-9]*W>.+<\/[0-9]*W>)(.+)(?!<ORG>)*/$1<RESc>$2<\/RESc>$3/g;
 			$l =~ s/(<ORG>.+?<\/ORG>.*?<[0-9]*W>.+?<\/[0-9]*W>)(((?!<ORG>).)+)/$1<RESc>$2<\/RESc>/g;
 			print "\t$l ;\n";
-			#@arr = split(/<\/ORG>/);
-			#$count = 0;
-			#foreach (@arr) {
-			#	$count++;
-			#	#print "\t\t$_\n";
-			#	$_ =~ s/(.+?)(<[0-9]*W>.*?<\/[0-9]*W>)/<RESc>$1<\/RESc>$2/g;
-			#	print "\t\t[$count]$_ ;;\n";
-			#}
 		}
 	}
 	print ";;;\n";
