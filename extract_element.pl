@@ -7,7 +7,7 @@ $op1 = $ARGV[2]; #Excluding other tag
 open(IN,$f);
 if($op1 eq "-e"){
 	while(<IN>){
-		@hit = $_ =~ /(<$tag>[^<>]*<\/$tag>)/g;
+		@hit = $_ =~ /(<$tag>[^<>]*?<\/$tag>)/g;
 		foreach $j (@hit) {
 			print "$j\n";
 		}
