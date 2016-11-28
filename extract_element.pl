@@ -2,12 +2,24 @@
 
 $tag = $ARGV[0];
 $f = $ARGV[1];
+$op1 = $ARGV[2]; #Excluding other tag
 
 open(IN,$f);
-while(<IN>){
-	@hit = $_ =~ /(<$tag>[^<>]*<\/$tag>)/g;
-	foreach $j (@hit) {
-		print "$j\n";
+if($op1 eq "-e"){
+	while(<IN>){
+		@hit = $_ =~ /(<$tag>[^<>]*<\/$tag>)/g;
+		foreach $j (@hit) {
+			print "$j\n";
+		}
 	}
+}elsif($op1 eq "-E"){
+	while(<IN>){
+		@hit = $_ =~ /(<$tag>.*?<\/$tag>)/g;
+		foreach $j (@hit) {
+			print "$j\n";
+		}
+	}
+}else{
+	print "unknown option: $op1 \n";
 }
 close(IN);
