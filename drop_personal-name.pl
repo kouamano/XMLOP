@@ -71,21 +71,28 @@ if($ie == 1){
 open(IN,$head);
 while(<IN>){
 	chomp;
-	push(@head,$_)
+	$tx = "\(?:".$_."\)";
+	push(@head,$tx);
 }
 close(IN);
+$h_list = join('|',@head);
+print $h_list;
 
 open(IN,$tail);
 while(<IN>){
 	chomp;
-	push(@tail,$_);
+	$tx = "\(?:".$_."\)";
+	push(@tail,$tx);
 }
 close(IN);
+$t_list = join('|',@tail);
+print $t_list;
 
 
 open(IN,$file);
 while(<IN>){
-	$_ =~ s///g;
+	$_ =~ s/($h_list)(.*?) ($t_list)/<DEL>$1$2<\/DEL> $3/g;
+	#$_ =~ s/($h_list)(.*?) ($t_list)/ $3/g;
 	print $_;
 
 }
