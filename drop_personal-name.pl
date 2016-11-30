@@ -13,7 +13,7 @@ $ie = 0;
 # subroutine
 sub _help {
 	print "USAGE:\n";
-	print " drop_personal-name.pl h=<file of headings> t=<file of tails> -t|-T -h -c \n"
+	print " drop_personal-name.pl h=<file of headings> t=<file of tails> -t|-T -h -c \n";
 	print "OPTION:\n";
 	print " -h : help\n";
 	print " -c : option check\n";
@@ -118,4 +118,4 @@ close(IN);
 
 
 
-
+# end of code
