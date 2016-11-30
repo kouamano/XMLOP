@@ -7,12 +7,13 @@ $status = 0;
 $file = "";
 $head = "";
 $tail = "";
+$tag = 1;
 $ie = 0;
 
 # subroutine
 sub _help {
 	print "USAGE:\n";
-	printf " drop_personal-name.pl h=<file of headings> t=<file of tails> -h -c \n"
+	printf " drop_personal-name.pl h=<file of headings> t=<file of tails> -t|-T -h -c \n"
 }
 
 sub _check {
@@ -23,11 +24,12 @@ sub _check {
 	print " file:$file:\n";
 	print " head:$head:\n";
 	print " tail:$tail:\n";
+	print " tag:$tag:\n";
 }
 
 sub _status {
 	print "STATUS:\n";
-	printf " Under construction.\n"
+	printf " Available.\n"
 }
 
 # argment analysis
@@ -38,6 +40,10 @@ foreach $l (@ARGV) {
 		$check = 1;
 	}elsif($l eq "-s"){
 		$status = 1;
+	}elsif($l eq "-t"){
+		$tag = 1;
+	}elsif($l eq "-T"){
+		$tag = 0;
 	}elsif($l =~ /f=(.*)/){
 		$file = $1;
 	}elsif($l =~ /h=(.*)/){
@@ -76,7 +82,7 @@ while(<IN>){
 }
 close(IN);
 $h_list = join('|',@head);
-print $h_list;
+#print $h_list;
 
 open(IN,$tail);
 while(<IN>){
@@ -86,14 +92,25 @@ while(<IN>){
 }
 close(IN);
 $t_list = join('|',@tail);
-print $t_list;
+#print $t_list;
 
 
 open(IN,$file);
-while(<IN>){
-	$_ =~ s/($h_list)(.*?) ($t_list)/<DEL>$1$2<\/DEL> $3/g;
-	#$_ =~ s/($h_list)(.*?) ($t_list)/ $3/g;
-	print $_;
-
+if($tag == 1){
+	while(<IN>){
+		$_ =~ s/($h_list)(.*?) ($t_list)/<DEL>$1$2<\/DEL> $3/g;
+		#$_ =~ s/($h_list)(.*?) ($t_list)/ $3/g;
+		print $_;
+	}
+}else{
+	while(<IN>){
+		#$_ =~ s/($h_list)(.*?) ($t_list)/<DEL>$1$2<\/DEL> $3/g;
+		$_ =~ s/($h_list)(.*?) ($t_list)/ $3/g;
+		print $_;
+	}
 }
 close(IN);
+
+
+
+
