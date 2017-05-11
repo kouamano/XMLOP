@@ -28,6 +28,6 @@ if($op1 eq "-e"){
 		}
 	}
 }else{
-	print "unknown option $op2";
+	print "unknown option.";
 }
 close(IN);
