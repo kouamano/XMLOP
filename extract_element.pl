@@ -10,14 +10,14 @@ if ($op1 eq "") {
 open(IN,$f);
 if($op1 eq "-e"){
 	while(<IN>){
-		@hit = $_ =~ /(<$tag>[^<>]*?<\/$tag>)/g;
+		@hit = $_ =~ /(<${tag}[^<>]*>[^<>]*?<\/$tag>)/g;
 		foreach $j (@hit) {
 			print "$j\n";
 		}
 	}
 }elsif($op1 eq "-E"){
 	while(<IN>){
-		@hit = $_ =~ /(<$tag>.*?<\/$tag>)/g;
+		@hit = $_ =~ /(<${tag}[^<>]*>.*?<\/$tag>)/g;
 		foreach $j (@hit) {
 			print "$j\n";
 		}
