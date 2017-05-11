@@ -2,7 +2,10 @@
 
 $tag = $ARGV[0];
 $f = $ARGV[1];
-$op1 = $ARGV[2]; #Excluding other tag
+$op1 = $ARGV[2];
+if ($op1 eq "") {
+	$op1 = "-E"; #Including other tags
+}
 
 open(IN,$f);
 if($op1 eq "-e"){
