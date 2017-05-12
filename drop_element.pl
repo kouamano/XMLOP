@@ -13,7 +13,7 @@ $ie = 0;
 # subroutine
 sub _help {
 	print "USAGE:\n";
-	printf " KO_element.pl tag=<tag> if=<input file> of=<output file(KO-part)> -e|-E -h -c -s \n"
+	printf " drop_element.pl tag=<tag> if=<input file> of=<output file(KO-part)> -e|-E -h -c -s \n"
 }
 
 sub _check {
@@ -79,6 +79,7 @@ if($ex == 0){ # -E
 	open(IN,$if);
 	while(<IN>){
 		$_ =~ s/(<$tag>[^<>]*?<\/$tag>)//g;
+		$_ =~ s/(<${tag}\/>)//g;
 		#$_ =~ s/<$tag>.*?<\/$tag>//g;
 		print $_;
 		print OUT "$1\n"
@@ -89,6 +90,7 @@ if($ex == 0){ # -E
 	while(<IN>){
 		#$_ =~ s/<$tag>[^<>]*?<\/$tag>//g;
 		$_ =~ s/<$tag>.*?<\/$tag>//g;
+		$_ =~ s/<${tag}\/>//g;
 		print $_;
 		print "$1\n"
 	}
