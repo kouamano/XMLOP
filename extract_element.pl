@@ -7,8 +7,12 @@ if ($op1 eq "") {
 	$op1 = "-E"; #Including other tags
 }
 $op2 = $ARGV[3];
-if ($op2 eq "") {
+if ($op2 eq "\\n") {
 	$op2 = "\n";
+}
+$op3 = $ARGV[4];
+if ($op3 eq "\\n") {
+	$op3 = "\n";
 }
 
 
@@ -19,6 +23,7 @@ if($op1 eq "-e"){
 		foreach $j (@hit) {
 			print "$j$op2";
 		}
+		print "$op3"
 	}
 }elsif($op1 eq "-E"){
 	while(<IN>){
@@ -26,6 +31,7 @@ if($op1 eq "-e"){
 		foreach $j (@hit) {
 			print "$j$op2";
 		}
+		print "$op3"
 	}
 }else{
 	print "unknown option.";
