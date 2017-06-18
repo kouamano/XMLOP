@@ -13,6 +13,8 @@ root = tree.getroot()
 
 EOF
 
+print "print(args[1])\n\n";
+
 while(<>){
   chomp;
   print 'for e in root.findall(\'.//*[@';
