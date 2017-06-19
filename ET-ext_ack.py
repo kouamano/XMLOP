@@ -15,7 +15,7 @@ root = tree.getroot()
 #  print(e.tag)
 #  print("+"+e.text+"+")
 #print('+++++')
-for e in root.findall('.//*[@sec-type="materials"]'):
+for e in root.findall('.//ack'):
   try:
     print(ET.tostring(e))
   except:

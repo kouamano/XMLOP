@@ -26,3 +26,5 @@ while(<>){
   print "  except:\n";
   print "    pass\n";
 }
+
+print "print(\";;;\")\n";
