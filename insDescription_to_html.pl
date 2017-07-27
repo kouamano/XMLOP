@@ -12,6 +12,8 @@ $ie = 0;
 
 # subroutine
 sub _help {
+	print "DESCRIPTION:\n";
+	print " insDescription_to_html.pl inserts tag into xml file with no-separator.\n";
 	print "USAGE:\n";
 	print " insDescription_to_html.pl src=<src file> trm=<term list file> col=<search object column of trm> tag=<tag name> [-i] [-n] .\n";
 	print " <column>: column # of src file; start at 0; sep:TAB; the targets are the columns after # .\n";
