@@ -107,9 +107,11 @@ while(<IN>){
 		}
 		#print "$tarr[$col]\n";
 		if($i == 0){
-			$line =~ s/([( ]|^)($sterm)([ ,;.)])/$1<$tag desc="$desc">$2<\/$tag>$3/g;
+			#$line =~ s/([( ]|^)($sterm)([ ,;.)])/$1<$tag desc="$desc">$2<\/$tag>$3/g;
+			$line =~ s/($sterm)/<$tag desc="$desc">$1<\/$tag>/g;
 		}else{
-			$line =~ s/([( ]|^)($sterm)([ ,;.)])/$1<$tag desc="$desc">$2<\/$tag>$3/ig;
+			#$line =~ s/([( ]|^)($sterm)([ ,;.)])/$1<$tag desc="$desc">$2<\/$tag>$3/ig;
+			$line =~ s/($sterm)/<$tag desc="$desc">$1<\/$tag>/ig;
 		}
 	}
 	print "$line";
