@@ -23,7 +23,7 @@ if($op1 eq "-e"){
 		foreach $j (@hit) {
 			print "$j$op2";
 		}
-		print "$op3"
+		print "$op3\n"
 	}
 }elsif($op1 eq "-E"){
 	while(<IN>){
@@ -31,7 +31,7 @@ if($op1 eq "-e"){
 		foreach $j (@hit) {
 			print "$j$op2";
 		}
-		print "$op3"
+		print "$op3\n"
 	}
 }else{
 	print "unknown option.";
