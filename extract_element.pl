@@ -21,7 +21,7 @@ if($op1 eq "-e"){
 	while(<IN>){
 		@hit = $_ =~ /(<${tag}[^<>]*>[^<>]*?<\/$tag>)/g;
 		foreach $j (@hit) {
-			print "$j$op2";
+			print "$j$op2\n";
 		}
 		print "$op3\n"
 	}
@@ -29,7 +29,7 @@ if($op1 eq "-e"){
 	while(<IN>){
 		@hit = $_ =~ /(<${tag}[^<>]*>.*?<\/$tag>)/g;
 		foreach $j (@hit) {
-			print "$j$op2";
+			print "$j$op2\n";
 		}
 		print "$op3\n"
 	}
