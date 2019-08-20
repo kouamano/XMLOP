@@ -10,6 +10,7 @@ while($tx =~ /(<!\[CDATA\[.*?\]\]>)/g){
 	$p = pos($tx);
 	$l = length($1);
 	$s = $p-$l;
-	print "$s:$p\t$1\n";
+	$e = $p-1;
+	print "$s-$e\t$1\n";
 	#print "$2";
 }
