@@ -6,6 +6,7 @@ while(<>){
 	$_ =~ s/\s+$//;
 	@arr = split(/\s+/,$_);
 	foreach(@arr){
+		#print ";;$_;;";
 		$term = $_;
 		$len = length($term);
 		$st3 = substr($term,$len-3,3);
@@ -24,6 +25,11 @@ while(<>){
 			print "$_ ";
 		}elsif($st2 eq "'s"){
 			print "$_ ";
+		}elsif($st1 eq "s" && $len <= 4){
+			print "$_ ";
+		}elsif($st1 eq "s" && $len > 4){
+			substr($term,$len-1,1,"");
+			print "$term ";
 		}elsif($last eq "s"){
 			$tmp = $term;
 			$tmp2 = $_;
@@ -34,11 +40,6 @@ while(<>){
 				print "$tmp2 ";
 				next;
 			}
-		}elsif($st1 eq "s" && $len <= 4){
-			print "$_ ";
-		}elsif($st1 eq "s" && $len > 4){
-			substr($term,$len-1,1,"");
-			print "$term ";
 		}else{
 			print "$_ ";
 		}
